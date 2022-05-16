@@ -1,2 +1,4 @@
-# learn_to_code_R
-Learner repo for modules and exercises with data
+# Learn to code: R for data analysis
+
+Learner repo for modules and exercises with data for the seminars
+
