@@ -74,7 +74,7 @@ quality_name <- function(name){
        str_extract_all(name, '[aeiou]') |>
        pluck(1) |>
        length()  |>
-       between(floor(0.35 * nchar(name)), max_vowels)
+       between(floor(0.35 * nchar(name)), floor(0.7*nchar(name)))
    )
 }
 
@@ -88,25 +88,29 @@ autoparent <- function(alphabet = letters, ...) {
 }
 
 
-
-child <-
-  jane_austen_profile() |>
-  autoparent(lambda = 8.1)
-
-
-musk_profile() |>
-  autoparent(lambda = 12)
-
 austen <- jane_austen_profile()
+musk <- musk_profile()
+austen_musk <- c(austen, musk)
+
 map_chr(seq(1000), ~autoparent(alphabet = austen, lambda = 10)) |> sort()
+map_chr(seq(1000), ~autoparent(alphabet = musk, lambda = 10)) |> sort()
+map_chr(seq(1000), ~autoparent(alphabet = austen_musk, lambda = 10)) |> sort()
 
-
-
-monoclonal_antibody_namer <- function(alphabet, ...) {
-  mab <- str_glue('{autoparent(alphabet, ...)}imab')
-  if (quality_name(mab)) mab
-  else monoclonal_antibody_namer()
+#
+pharma_namer <- function(alphabet, ...) {
+  name <- new_name(alphabet, ...)
+  if (quality_name(name)) name
+  else pharma_namer(alphabet, ...)
 }
 
-name <- monoclonal_antibody_namer(austen, lambda = 12)
+monoclonal <- function(){
+  pharma_namer(austen, lambda = 10) |> paste0('imab', collapse = '')
+}
+sglt2 <- function(){
+  pharma_namer(austen, lambda = 6) |> paste0('iflozin', collapse = '')
+}
+
+monoclonal()
+sglt2()
+
 

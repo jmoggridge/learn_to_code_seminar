@@ -26,9 +26,8 @@ signals <-
 signals |> glimpse()
 
 
-# where do we start?
+# Where do we start? What should we do?
 
-# publish your findings....
 
 
 
