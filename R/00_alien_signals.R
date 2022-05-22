@@ -21,14 +21,12 @@ library(tidyverse)
 # signals data from...
 signals <-
   # reading in the csv file
-  read_csv('data/alien_signals.csv') |>
-  rename(frequency = x, amplitude = y)
+  read_csv("https://raw.githubusercontent.com/jmoggridge/learn_to_code_seminar/main/data/alien_signals.csv")
 
 signals |> glimpse()
 
 
 # where do we start?
-
 
 # publish your findings....
 
