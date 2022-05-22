@@ -127,6 +127,5 @@ test_rs |> conf_mat(truth = diagnosis, estimate = .pred_class)
 test_rs |> sens(truth = diagnosis, estimate = .pred_class)
 test_rs |> roc_auc(truth = diagnosis, estimate = .pred_malignant)
 
-test_rs |>
-  roc_cur
+
 

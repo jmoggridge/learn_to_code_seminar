@@ -26,11 +26,11 @@ rm(my_value)
 
 #' *primitive data types*
 ##----------------------------------------------##
-# we've seen these
+# we've seen this type
 dbl_val <- 1.2
-chr_val <- 'text or string data'
 
 # but not seen these
+chr_val <- 'text or string data'
 lgl_val <- TRUE
 fct_val <- factor('category1')
 date_val <- Sys.Date()
@@ -66,19 +66,28 @@ class(val)
 # ! 'not'
 a <- T
 b <- F
+a | b      # true
 
-a | b
-a & b
- !a
+a | b      # true
+a & b      # false
+!a         # false
+
+# what does this return and why?
+(a | b) & !(a & b)
 
 # 'xor': one or the other is true but not both
+base::xor |> View()
+
 xor <- function(x, y){
+  # cat("powered by Jason\n")
   (x | y) & !(x & y)
 }
+# xor |> View()
+
 xor(T, T)
-xor(F, F)
 xor(T, F)
 xor(F, T)
+xor(F, F)
 
 
 
